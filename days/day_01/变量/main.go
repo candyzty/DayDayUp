@@ -17,5 +17,6 @@ func main() {
 	var nam2 = "edx"
 	nam3 := "edx" // 只能在函数内
 	var name4, name5 = "a1", "a2"
-	log.Println(name, nam2, nam3, name4, name5)
+	var name12 string
+	log.Println(name, nam2, nam3, name4, name5, name12 == "")
 }
