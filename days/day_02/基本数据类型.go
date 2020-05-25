@@ -2,6 +2,7 @@ package main
 
 import "log"
 
+// 占位符 https://blog.csdn.net/HHTNAN/article/details/78607180
 // 布尔 string
 // int8 有符号 8 位整型 (-128 到 127) 长度：8bit
 //
