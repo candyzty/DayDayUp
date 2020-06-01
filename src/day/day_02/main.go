@@ -3,7 +3,13 @@ package main
 import (
     "fmt"
 )
-
+/**
+第二天
+数组
+切片
+map
+string
+ */
 func main()  {
 	day_04()
 }

@@ -74,6 +74,7 @@ func day_03(){
 	%c  字符打印byte。'c'
 	%c  打印地址
 	%T  数据类型输出
+	%x  小写16进制打印出
 	 */
 	fmt.Printf("a : %d type is %T\nb : %s type is %T\n",a,a,b,b)
 
