@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+
 	//显式类型定义： const b string = "abc"
 	//隐式类型定义： const b = "abc"
 	const LENGTH int = 10
