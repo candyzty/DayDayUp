@@ -16,12 +16,39 @@ func main(){
 	//}
 	a := new(name)
 	a.name = "张三"
-	fmt.Println(a.buildName())
-	a.printName()
+	meath := resultMeath(a)
+	var i = &meath
+	fmt.Println(*i);
+
+	var b = course{"zhang"}
+	resultMeath(b)
+	//fmt.Println(a.buildName())
+	//a.printName()
+	//var service nameService = new(name)
+	//service.printName()
 
 }
+
+func resultMeath(service nameService) nameService {
+	service.printName()
+	return service.buildName()
+}
+
 type name struct {
 	name string
+}
+
+type course struct {
+	name string
+}
+
+func (e course) printName() {
+	fmt.Println(e)
+}
+
+func (e course) buildName() name{
+	n := name {e.name}
+	return n
 }
 
 type nameService interface {
