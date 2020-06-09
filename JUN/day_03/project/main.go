@@ -26,10 +26,10 @@ func forStatic() {
 	if y == "y" {
 		fmt.Println("继续进行:")
 		forStatic()
-	} else {
-		fmt.Println("退出！")
-		//os.Exit(0)
-	}
+	} //else {
+	//	fmt.Println("退出！")
+	//	//os.Exit(0)
+	//}
 
 }
 
@@ -59,30 +59,43 @@ func delectMapInfo() {
 	name, ok := parmInit[delValue]
 	fmt.Println(name, ok)
 	delete(parmInit, name)
+	fmt.Println(parmInit)
+}
+
+func buildParameters() {
+	parameters := ""
+	airs := `
+	GET)   getMapInfo
+	PUT)   updateMapInfo
+	DEL)   delectMapInfo 
+    HELP)  Select the parameters of the build
+	`
+	fmt.Println(airs)
+	fmt.Scanln(&parameters)
+	switch parameters {
+	case "GET":
+		getMapInfo()
+	case "PUT":
+		updateMapInfo()
+	case "DEL":
+		delectMapInfo()
+	default:
+		fmt.Println("参数错误")
+	}
+	//if  c == create {
+	//	createUser()
+	//}else if g == get{
+	//	getMapInfo()
+	//}else if u == update{
+	//	updateMapInfo()
+	//}else if d == delect(){
+	//	delectMapInfo()
+	//}else {
+	//	fmt.Println("参数错误")
+	//}
 
 }
 
-//func buildParameters()  {
-//	m := map[string]string{
-//		"name":    "ccmouse",
-//		"course":  "golang",
-//		"site":    "imooc",
-//		"quality": "notbad",
-//	}
-//
-//	if  c == create {
-//		createUser()
-//	}else if g == get{
-//		getMapInfo()
-//	}else if u == update{
-//		updateMapInfo()
-//	}else if d == delect(){
-//		delectMapInfo()
-//	}else {
-//		fmt.Println("参数错误")
-//	}
-//
-//}
 func main() {
 	var x string
 	enter := "yes"
@@ -91,9 +104,9 @@ func main() {
 	if x == enter {
 		fmt.Println("恭喜你,咱们开始了")
 		forStatic()
-		getMapInfo()
+		buildParameters()
 	} else {
-		fmt.Println("游戏失败")
+		fmt.Println("游戏退出！")
 		os.Exit(0)
 	}
 }
