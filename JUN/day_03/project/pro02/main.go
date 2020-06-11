@@ -26,11 +26,7 @@ func forStatic() {
 	if y == "y" {
 		fmt.Println("继续进行:")
 		forStatic()
-	} //else {
-	//	fmt.Println("退出！")
-	//	//os.Exit(0)
-	//}
-
+	}
 }
 
 func createUser(value, key string) {
@@ -42,24 +38,48 @@ func createUser(value, key string) {
 
 func getMapInfo() {
 	getValue := ""
-	fmt.Println("查询已经存在的值！")
+	fmt.Println("查询key是否存在！")
 	fmt.Scanln(&getValue)
-	name, ok := parmInit[getValue]
-	fmt.Println(name, ok)
+	kayName, ok := parmInit[getValue]
+
+	if ok == true {
+		fmt.Println("parmInit = ", kayName)
+	} else {
+		fmt.Println("key不存在")
+	}
 }
 
 func updateMapInfo() {
+	updateKey := ""
 	updateValue := ""
-	fmt.Println("更新map参数")
-	fmt.Println(updateValue)
+	fmt.Println("更新map参数:")
+	fmt.Println("请输入更新key， value:")
+	fmt.Scanln(&updateKey)
+	fmt.Scanln(&updateValue)
+	keyName, ok := parmInit[updateKey]
+	if ok == true {
+		fmt.Println("parmInit = ", keyName)
+	} else {
+		fmt.Println("key不存在")
+		os.Exit(0)
+	}
+	parmInit[updateKey] = updateValue
+	fmt.Println(parmInit)
 }
 func delectMapInfo() {
-	delValue := ""
-	fmt.Println("删除map值")
-	name, ok := parmInit[delValue]
-	fmt.Println(name, ok)
-	delete(parmInit, name)
+	delKey := ""
+	fmt.Println("删除map值:")
+	fmt.Scanln(&delKey)
+	keyName, ok := parmInit[delKey]
+	if ok == true {
+		fmt.Println("parmInit = ", keyName)
+	} else {
+		fmt.Println("key不存在")
+		os.Exit(0)
+	}
+	delete(parmInit, delKey)
 	fmt.Println(parmInit)
+	//delectMapInfo()
 }
 
 func buildParameters() {
@@ -69,33 +89,26 @@ func buildParameters() {
 	PUT)   updateMapInfo
 	DEL)   delectMapInfo 
     HELP)  Select the parameters of the build
+    EXIT)  Exit is   0 
 	`
 	fmt.Println(airs)
 	fmt.Scanln(&parameters)
 	switch parameters {
 	case "GET":
 		getMapInfo()
+		buildParameters()
 	case "PUT":
 		updateMapInfo()
+		buildParameters()
 	case "DEL":
 		delectMapInfo()
+		buildParameters()
+	case "EXIT":
+		os.Exit(0)
 	default:
 		fmt.Println("参数错误")
 	}
-	//if  c == create {
-	//	createUser()
-	//}else if g == get{
-	//	getMapInfo()
-	//}else if u == update{
-	//	updateMapInfo()
-	//}else if d == delect(){
-	//	delectMapInfo()
-	//}else {
-	//	fmt.Println("参数错误")
-	//}
-
 }
-
 func main() {
 	var x string
 	enter := "yes"
