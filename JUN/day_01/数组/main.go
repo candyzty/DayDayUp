@@ -16,7 +16,7 @@ func printArray(arr [5]int) {
 func main() {
 	var arr1 [5]int // 代表5个int
 	arr2 := [5]int{1, 2, 3, 4}
-	arr3 := [...]int{5, 6, 7, 8, 5}
+	arr3 := [...]int{5, 6, 7, 8, 5} //   为了避免这种硬编码，你可以这样写，使用 ... 让Go语言自己根据实际情况来分配空间
 	var grid [4][5]int
 	fmt.Println(arr1, arr2, arr3)
 	fmt.Println(grid)
