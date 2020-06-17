@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 //1. 方法的语法
 //type Employee struct {
 //	name string
@@ -49,17 +47,79 @@ import "fmt"
 //}
 
 //3. 指针作为接收者
-type Rectangle struct {
-	width, height int64
+//type Rectangle struct {
+//	width, height int64
+//}
+//
+////func (r *Rectangle)setVal()  {
+//func (r Rectangle) setVal() {
+//	r.height = 20
+//}
+//func main() {
+//	p := Rectangle{1, 2}
+//	s := p
+//	p.setVal()
+//	fmt.Println(p.height, s.height)
+//}
+
+//接口
+import (
+	"fmt"
+	"strconv"
+)
+
+type Good interface {
+	settleAccount() int
+	orderInfo() string
+}
+type Phone struct {
+	name     string
+	quantity int
+	price    int
 }
 
-//func (r *Rectangle)setVal()  {
-func (r Rectangle) setVal() {
-	r.height = 20
+func (phone Phone) settleAccount() int {
+	return phone.quantity * phone.price
+}
+func (phone Phone) orderInfo() string {
+	return "您要购买" + strconv.Itoa(phone.quantity) + "个" +
+		phone.name + "计：" + strconv.Itoa(phone.settleAccount()) + "元"
+}
+
+type FreeGift struct {
+	name     string
+	quantity int
+	price    int
+}
+
+func (gift FreeGift) settleAccount() int {
+	return 0
+}
+func (gift FreeGift) orderInfo() string {
+	return "您要购买" + strconv.Itoa(gift.quantity) + "个" +
+		gift.name + "计：" + strconv.Itoa(gift.settleAccount()) + "元"
+}
+
+func calculateAllPrice(goods []Good) int {
+	var allPrice int
+	for _, good := range goods {
+		fmt.Println(good.orderInfo())
+		allPrice += good.settleAccount()
+	}
+	return allPrice
 }
 func main() {
-	p := Rectangle{1, 2}
-	s := p
-	p.setVal()
-	fmt.Println(p.height, s.height)
+	iPhone := Phone{
+		name:     "iPhone",
+		quantity: 1,
+		price:    8000,
+	}
+	earphones := FreeGift{
+		name:     "耳机",
+		quantity: 1,
+		price:    200,
+	}
+	goods := []Good{iPhone, earphones}
+	allPrice := calculateAllPrice(goods)
+	fmt.Printf("该订单总共需要支付 %d 元", allPrice)
 }
