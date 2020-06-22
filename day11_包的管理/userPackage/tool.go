@@ -1,7 +1,7 @@
 package userPackage
 
-import "fmt"
+var Name = "linshaoda"
 
-func init() {
-	fmt.Println("tool init")
+func Add(x, y int) int {
+	return x + y
 }
