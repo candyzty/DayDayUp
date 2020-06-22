@@ -1,8 +1,8 @@
 package main
 
+//大概的写了一下，并不完善。
 import (
 	"fmt"
-	"log"
 	"sort"
 )
 
@@ -13,16 +13,18 @@ type Student struct {
 	Score int8
 }
 
+//考虑到修改和删除，还是map比较合适
 type Class struct {
 	Map map[int]*Student
 }
 
+//添加学生
 func (c *Class) AddStudent() {
 	var id int
 	var name string
 	var age int8
 	var score int8
-	fmt.Println("输入id: ")
+	fmt.Print("输入id: ")
 	_, err := fmt.Scan(&id)
 	fmt.Print("输入姓名: ")
 	_, err = fmt.Scan(&name)
@@ -31,11 +33,11 @@ func (c *Class) AddStudent() {
 	fmt.Print("输入分数: ")
 	_, err = fmt.Scan(&score)
 	if err != nil {
-		log.Println("保存出错！")
+		fmt.Println("保存出错！")
 	}
 	_, isSave := c.Map[id]
 	if isSave {
-		log.Println("学生ID已存在！")
+		fmt.Println("学生ID已存在！")
 		return
 	}
 	student := &Student{
@@ -45,11 +47,10 @@ func (c *Class) AddStudent() {
 		Score: score,
 	}
 	c.Map[id] = student
-	fmt.Print(student)
-	fmt.Print(c.Map)
-	//fmt.Println("保存成功！")
-	log.Println("保存成功！")
+	fmt.Println("保存成功！")
 }
+
+//查看学生列表
 func (c *Class) ShowStudent() {
 	fmt.Printf("\t%s\t%s\t%s\t%s\n", "ID", "姓名", "年龄", "分数")
 	sortID := make([]int, 0)
@@ -63,14 +64,13 @@ func (c *Class) ShowStudent() {
 	}
 }
 
-// 删除学生
-
+//删除学生
 func (c *Class) DeleteStudent() {
-	fmt.Println("输入要删除学生的ID:")
+	fmt.Print("输入要删除的学生ID：")
 	var id int
-	_, err := fmt.Scanln(&id)
+	_, err := fmt.Scan(&id)
 	if err != nil {
-		fmt.Println("err 报错了！")
+		fmt.Println("err 好烦啊。")
 	}
 	_, isSave := c.Map[id]
 	if !isSave {
@@ -78,14 +78,16 @@ func (c *Class) DeleteStudent() {
 		return
 	}
 	delete(c.Map, id)
-	fmt.Println("删除成功！")
+	fmt.Println("删除成功！！")
 }
-func (c *Class) UpdateStudent() {
+
+//修改学生信息
+func (c *Class) ChangeStudent() {
+	fmt.Print("输入要修改的学生ID：")
 	var id int
-	fmt.Println("输入修改的学生ID:")
-	_, err := fmt.Scanln(&id)
+	_, err := fmt.Scan(&id)
 	if err != nil {
-		fmt.Println("err  报错！")
+		fmt.Println("err 好烦啊。")
 	}
 	_, isSave := c.Map[id]
 	if !isSave {
@@ -95,7 +97,7 @@ func (c *Class) UpdateStudent() {
 	var name string
 	var age int8
 	var score int8
-	fmt.Println("输入姓名: ")
+	fmt.Print("输入姓名: ")
 	_, err = fmt.Scan(&name)
 	fmt.Print("输入年龄: ")
 	_, err = fmt.Scan(&age)
@@ -112,13 +114,15 @@ func (c *Class) UpdateStudent() {
 	}
 	c.Map[id] = student
 	fmt.Println("修改成功！")
+
 }
+
 func main() {
 	c := &Class{}
 	c.Map = make(map[int]*Student, 50)
 	for {
 		fmt.Println("要执行的操作：")
-		fmt.Println("1. 添加  2.查看  3.删除  4.修改")
+		fmt.Print("1. 添加  2.查看  3.删除  4.修改")
 		var do int8
 		_, err := fmt.Scan(&do)
 		if err != nil {
@@ -132,7 +136,7 @@ func main() {
 		case 3:
 			c.DeleteStudent()
 		case 4:
-			c.UpdateStudent()
+			c.ChangeStudent()
 		default:
 			fmt.Println("输入有误！")
 		}
