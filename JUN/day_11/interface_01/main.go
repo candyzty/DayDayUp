@@ -6,8 +6,7 @@ import "fmt"
 
 type AInterface interface {
 	//name string  // 接口中不能有任何变量
-	//Say()
-
+	Say()
 }
 
 type Stu struct {
