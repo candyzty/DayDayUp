@@ -58,10 +58,6 @@ func (this *CustomerService) Add() []module.Customer {
 	fmt.Scan(&phone)
 	fmt.Print("请输入邮箱:")
 	fmt.Scan(&email)
-
-	//this.customers = append(this.customers,customer)
-	//constomerservice := &CustomerService{}
-	//this.customerNub =
 	this.customerNub++
 	//this.customerNub =  this.customerNub
 	//constomerservice.customerNub = id + 1
