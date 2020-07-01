@@ -6,7 +6,7 @@ package main
 //	用value,ok:= m[key] 来判断是否存在key
 //	用delete删除一个key
 //	使用range遍历key，或者遍历key,value对
-//	map是无须的
+//	map是无序的
 //	使用len获得map的个数
 //	除了slice，map,function的内建类型都可以作为key
 //	Struct类型不包含上述字段，也可作为key
