@@ -1,58 +1,74 @@
-/**
-* @Author: redgr
-* @Description:
-* @File:  main
-* @Version: 1.0.0
-* @Date: 2020/7/1 21:28
- */
+package ServiceModule
 
-package main
+import "fmt"
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
-//Student 学生
-type Student struct {
-	ID     int
-	Gender string
+// 定义结构体
+type Customer struct {
+	Id     int
 	Name   string
+	Gender string
+	Age    int
+	Phone  int64
+	Email  string
 }
 
-//Class 班级
-type Class struct {
-	Title    string
-	Students []*Student
+type CustomerInfo struct {
+	customerNub int
+	customers   Customer
 }
 
-func main() {
-	c := &Class{
-		Title:    "101",
-		Students: make([]*Student, 0, 200),
+var data = []CustomerInfo{
+	CustomerInfo{1, Customer{1, "2", "3", 4, 5, "6"}},
+	CustomerInfo{2, Customer{1, "2", "3", 4, 5, "6"}},
+}
+
+func (c *CustomerInfo) List() {
+	for i := 0; i < len(data); i++ {
+		fmt.Println(data[i])
 	}
-	for i := 0; i < 10; i++ {
-		stu := &Student{
-			Name:   fmt.Sprintf("stu%02d", i),
-			Gender: "男",
-			ID:     i,
-		}
-		c.Students = append(c.Students, stu)
+	fmt.Printf("%v", data)
+
+}
+
+func (c *CustomerInfo) Add() {
+	fmt.Println("添加用户")
+	fmt.Println("--------------------添加客户--------------------")
+	var (
+		name   string
+		gender string
+		age    int
+		phone  int64
+		email  string
+	)
+
+	fmt.Print("请输入姓名:")
+	fmt.Scan(&name)
+	fmt.Print("请输入性别:")
+	fmt.Scan(&gender)
+	fmt.Print("请输入年龄:")
+	fmt.Scan(&age)
+	fmt.Print("请输入手机号:")
+	fmt.Scan(&phone)
+	fmt.Print("请输入邮箱:")
+	fmt.Scan(&email)
+	fmt.Println("增加前", c.customerNub)
+	c.customerNub++
+	fmt.Println("增加后", c.customerNub)
+	//ClientInfo := &NewCustomer{name,gender,age,phone,email}
+	stu := Customer{
+		Name:   name,
+		Gender: gender,
+		Age:    age,
+		Phone:  phone,
+		Email:  email,
 	}
-	//JSON序列化：结构体-->JSON格式的字符串
-	data, err := json.Marshal(c)
-	if err != nil {
-		fmt.Println("json marshal failed")
-		return
-	}
-	fmt.Printf("json:%s\n", data)
-	//JSON反序列化：JSON格式的字符串-->结构体
-	str := `{"Title":"101","Students":[{"ID":0,"Gender":"男","Name":"stu00"},{"ID":1,"Gender":"男","Name":"stu01"},{"ID":2,"Gender":"男","Name":"stu02"},{"ID":3,"Gender":"男","Name":"stu03"},{"ID":4,"Gender":"男","Name":"stu04"},{"ID":5,"Gender":"男","Name":"stu05"},{"ID":6,"Gender":"男","Name":"stu06"},{"ID":7,"Gender":"男","Name":"stu07"},{"ID":8,"Gender":"男","Name":"stu08"},{"ID":9,"Gender":"男","Name":"stu09"}]}`
-	c1 := &Class{}
-	err = json.Unmarshal([]byte(str), c1)
-	if err != nil {
-		fmt.Println("json unmarshal failed!")
-		return
-	}
-	fmt.Printf("%#v\n", c1)
+	c.customers = stu
+
+	data = append(data, *c)
+}
+func (c *CustomerInfo) Update() {
+	fmt.Println("修改用户")
+}
+func (c *CustomerInfo) Delete() {
+	fmt.Println("查删除用户")
 }

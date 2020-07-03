@@ -10,8 +10,8 @@ import (
 
 func main() {
 	hcs := ServiceModule.CustomerInfo{
-		CustomerNub: 1,
-		Customers:   make([]*ServiceModule.Customer, 10, 100),
+		//CustomerNub: int(0),
+		Customers: []*ServiceModule.Customer{},
 	}
 	//fmt.Println("----欢迎来到客户管理系统----")
 	for {
