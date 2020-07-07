@@ -1,9 +1,7 @@
 package ServiceModule
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
 
 // 定义结构体
@@ -28,7 +26,7 @@ type Customer struct {
 //}
 
 type CustomerInfo struct {
-	//CustomerNub int
+	//CustomerNub int64
 	Customers []*Customer
 }
 
@@ -127,16 +125,25 @@ func (c *CustomerInfo) Update() {
 
 // 删除客户信息
 func (c *CustomerInfo) Delete() {
-	fmt.Println("查删除用户")
+	var (
+		stuId string
+	)
+	fmt.Println("查询用户索引")
+	fmt.Print("输入你要删除的学号:")
+	fmt.Scan(&stuId)
+	for k, v := range c.Customers {
+		fmt.Print(k, v)
+
+	}
 }
 
 // 终端输入，如果中间有空格，使用scan只能接收第一个参数
 
 // 使用bufio.NewReader
-func useBufio() {
-	s := ""
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("请输入内容：")
-	s, _ = reader.ReadString('\n')
-	fmt.Printf("你输入的内容为:%s\n", s)
-}
+//func useBufio() {
+//	s := ""
+//	reader := bufio.NewReader(os.Stdin)
+//	fmt.Println("请输入内容：")
+//	s, _ = reader.ReadString('\n')
+//	fmt.Printf("你输入的内容为:%s\n", s)
+//}
