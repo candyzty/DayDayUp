@@ -100,6 +100,7 @@ func updateTodo(c *gin.Context) {
 		"message": "Todo updated succefully",
 	})
 }
+
 func deleteTodo(c *gin.Context) {
 	var todo todoModel
 	todoID := c.Param("id")

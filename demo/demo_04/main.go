@@ -14,9 +14,9 @@ func main() {
 		userV1.POST("/cre", controllers.CreateUser)
 		userV1.PUT("/:id", controllers.UpdateUser)
 		userV1.DELETE("/:id", controllers.DeleteUser)
-		userV1.POST("/id", controllers.LoginUser)
+		userV1.POST("/qwe", controllers.LoginUser)
 	}
 	db.Init()
-	//defer db.Close()
+	defer db.DB.Close()
 	router.Run(":8001")
 }
