@@ -1,0 +1,6 @@
+{
+  "port": 8123,
+  "version": "v1.2.3.4.5",
+  "servername": "takeaway",
+  "url": "http://127.0.0.1:8123/version"
+}
