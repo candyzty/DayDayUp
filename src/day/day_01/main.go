@@ -10,7 +10,7 @@ func main() {
 	day_05()
 }
 
-func day_01(){
+func day_01() {
 	//变量的几种声明方式
 
 	/**
@@ -25,14 +25,14 @@ func day_01(){
 	*/
 	b := 10
 	//‘\n’windows的换行符
-	fmt.Printf("b type is %T\n",b)
+	fmt.Printf("b type is %T\n", b)
 }
 
-func day_02()  {
+func day_02() {
 	//常量的定义
 	const a int8 = 127
-	const c  = "v"
-	fmt.Printf("c type is %T\n",c)
+	const c = "v"
+	fmt.Printf("c type is %T\n", c)
 
 	const (
 		b = 10
@@ -40,27 +40,28 @@ func day_02()  {
 		单引号和双引号区分string还是byte<uint8>
 		自动类型推导
 		:=将'c'默认为uint16
-		 */
+		*/
 		e = 'c'
 		r = "c"
 	)
-	fmt.Printf("e type : %T,r type is : %T",e,r)
+	fmt.Printf("e type : %T,r type is : %T", e, r)
 
 }
+
 /**
 控制台输入输出
- */
-func day_03(){
+*/
+func day_03() {
 	a := 10
 	b := "10"
 	/**
 	普通打印
-	 */
+	*/
 	fmt.Print(a)
 	fmt.Print(b)
 	/**
 	打印后换行
-	 */
+	*/
 	fmt.Println(a)
 	fmt.Println(b)
 	/**
@@ -75,14 +76,13 @@ func day_03(){
 	%c  打印地址
 	%T  数据类型输出
 	%x  小写16进制打印出
-	 */
-	fmt.Printf("a : %d type is %T\nb : %s type is %T\n",a,a,b,b)
-
+	*/
+	fmt.Printf("a : %d type is %T\nb : %s type is %T\n", a, a, b, b)
 
 	/**
 	控制台输入
 	1.fmt包下的scan系列。与print系列相似
-	 */
+	*/
 	var s int
 	var r string
 	fmt.Scan(&s)
@@ -93,28 +93,28 @@ func day_03(){
 	fmt.Scanln(&r)
 	fmt.Println(s)
 	fmt.Println(r)
-	fmt.Scanf("%d,%s",&s,&r)
-	fmt.Println(s,r)
+	fmt.Scanf("%d,%s", &s, &r)
+	fmt.Println(s, r)
 
 	/**
 	2.通过IO从控制台输入
-	 */
+	*/
 	fmt.Print("请输入：")
 	reader := bufio.NewReader(os.Stdin)
 	s1, err := reader.ReadString('a')
-	fmt.Printf("读取的数据：%s,err:%T",s1,err)
+	fmt.Printf("读取的数据：%s,err:%T", s1, err)
 }
 
 /**
 GO的流程控制
 顺序结构，选择结构，循环结构
- */
-func day_04(){
+*/
+func day_04() {
 	/**
 	选择结构
 	if，else，switch，select
-	 */
-	a,b := 3,4
+	*/
+	a, b := 3, 4
 	if a > b {
 		fmt.Println("a大于b")
 	}
@@ -124,23 +124,23 @@ func day_04(){
 
 	switch a {
 	case 1:
-		fmt.Println("选择1");
+		fmt.Println("选择1")
 	case 3:
-		fmt.Println("选择3");
+		fmt.Println("选择3")
 		fallthrough
 	case 4:
-		fmt.Println("选择4");
+		fmt.Println("选择4")
 		fallthrough
 	case 5:
-		fmt.Println("选择5");
+		fmt.Println("选择5")
 	default:
-		fmt.Println("hello！ 借宿一");
+		fmt.Println("hello！ 借宿一")
 	}
-	fmt.Println("结束了！！！");
+	fmt.Println("结束了！！！")
 }
 
-func day_05(){
-	for i := 0; i<10 ; i++ {
-		fmt.Println(i);
+func day_05() {
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
 	}
 }

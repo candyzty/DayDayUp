@@ -2,9 +2,9 @@ package rocketmq
 
 import "fmt"
 
-func Init(){
+func Init() {
 	fmt.Println("Init  初始化。。。。")
 }
-func init(){
+func init() {
 	fmt.Println("init  初始化。。。。")
 }

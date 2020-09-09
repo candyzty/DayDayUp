@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 	//a := image{name: "张三", age: 20}
 	//b := image{}
 	//a.printImage()
@@ -18,7 +18,7 @@ func main(){
 	a.name = "张三"
 	meath := resultMeath(a)
 	var i = &meath
-	fmt.Println(*i);
+	fmt.Println(*i)
 
 	var b = course{"zhang"}
 	resultMeath(b)
@@ -46,17 +46,17 @@ func (e course) printName() {
 	fmt.Println(e)
 }
 
-func (e course) buildName() name{
-	n := name {e.name}
+func (e course) buildName() name {
+	n := name{e.name}
 	return n
 }
 
 type nameService interface {
 	printName()
-	buildName()name
+	buildName() name
 }
 
-func (e name) printName(){
+func (e name) printName() {
 	fmt.Println(e.name)
 }
 func (e name) buildName() name {
@@ -65,11 +65,12 @@ func (e name) buildName() name {
 
 type image struct {
 	name string
-	age int
+	age  int
 }
+
 /**
 方法。即结构体的方法
- */
+*/
 func (e image) printImage() {
-	fmt.Printf("用户的名字：{%v},年龄：{%v}\n", e.name,e.age)
+	fmt.Printf("用户的名字：{%v},年龄：{%v}\n", e.name, e.age)
 }

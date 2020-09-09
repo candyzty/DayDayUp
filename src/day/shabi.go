@@ -1,16 +1,12 @@
 package main
 
-import (
-	"day_01"
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	xunhuan()
 }
 
-func xunhuan()  {
-	day_01.Day_01_test()
+func xunhuan() {
 	println("请输入")
 	var scanln string
 	fmt.Scanln(&scanln)
@@ -22,5 +18,5 @@ func xunhuan()  {
 }
 
 func printSB() {
-	fmt.Println("张杰是傻逼")
+	fmt.Println("薛佳是傻逼")
 }
